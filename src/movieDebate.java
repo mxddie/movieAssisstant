@@ -169,31 +169,32 @@ public class movieDebate {
 
         //BOT        //BOT        //BOT        //BOT            //BOT        //BOT        //BOT        //BOT
 
-            System.out.println("🧑> " + req.getWitText());
-            if (req.getWitIntent().equals( "getGenre")) {
-                System.out.println("💻> " + Movie.getdataTitle() + "'s genre(s) are/is " + Movie.getdataGenre());
-            }
-            else if (req.getWitIntent().equals("getRating")) {
-                System.out.println("💻> " + Movie.getdataTitle() + " is rated " + Movie.getdataImdbRating() + " at IMDb");
-            }
-            else if (req.getWitIntent().equals("CheckGenre")) {
-                String genreChecker = Movie.getdataGenre();
-                if (genreChecker.contains(req.getWitGenre())) {
-                    System.out.println("💻> Yes, " + req.getWitGenre() + "is one of the genres of " + Movie.getdataTitle());
-                } else {
-                    System.out.println("💻> No, " + req.getWitGenre() + "isn't one of the genres of " + Movie.getdataTitle());
-                }
+            if(Movie.getDataResponse().equals("True")) {
+                System.out.println("🧑 ➡ " + req.getWitText());
+                if (req.getWitIntent().equals("getGenre")) {
+                    System.out.println("💻 ➡ " + Movie.getdataTitle() + "'s genre(s) are/is " + Movie.getdataGenre());
+                } else if (req.getWitIntent().equals("getRating")) {
+                    System.out.println("💻 ➡ " + Movie.getdataTitle() + " is rated " + Movie.getdataImdbRating() + " at IMDb");
+                } else if (req.getWitIntent().equals("CheckGenre")) {
+                    String genreChecker = Movie.getdataGenre();
+                    if (genreChecker.contains(req.getWitGenre())) {
+                        System.out.println("💻 ➡ Yes, " + req.getWitGenre() + "is one of the genres of " + Movie.getdataTitle());
+                    } else {
+                        System.out.println("💻 ➡ No, " + req.getWitGenre() + "isn't one of the genres of " + Movie.getdataTitle());
+                    }
 
-            }
-            else if (req.getWitIntent().equals("getPlot")) {
-                System.out.println("💻> "+Movie.getdataTitle() + " Plot: " + Movie.getdataPlot());
+                } else if (req.getWitIntent().equals("getPlot")) {
+                    System.out.println("💻 ➡ " + Movie.getdataTitle() + " Plot: " + Movie.getdataPlot());
+                } else {
+                    System.out.println("💻 ➡ Sorry, Unable to understand");
+                }
             }
             else {
-                System.out.println("💻 > Sorry, Unable to understand");
+                System.out.println("💻 ➡ Sorry, Unable to understand");
             }
     }
     else{
-        System.out.println("Movie name not found");
+        System.out.println("💻 ➡ Movie name not found");
     }
 
     }
@@ -203,11 +204,16 @@ public class movieDebate {
 
         dataObj movieO = new dataObj();
 
-        movieO.setdataTitle(movie.getString("Title"));
-        movieO.setdataImdbRating(movie.getString("imdbRating"));
-        movieO.setdataGenre(movie.getString("Genre"));
-        movieO.setdataPlot(movie.getString("Plot"));
+        movieO.setDataResponse(movie.getString("Response"));
 
+        if(movieO.getDataResponse().equals("True")) {
+
+            movieO.setdataTitle(movie.getString("Title"));
+            movieO.setdataImdbRating(movie.getString("imdbRating"));
+            movieO.setdataGenre(movie.getString("Genre"));
+            movieO.setdataPlot(movie.getString("Plot"));
+
+        }
         return movieO;
     }
 

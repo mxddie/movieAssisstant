@@ -1,11 +1,24 @@
 package movieObject;
 
 public class dataObj {
+
+
+    String dataResponse;
+
     String dataTitle;
     String dataGenre;
     String dataPlot;
     String dataImdbRating;
 
+
+
+    public String getDataResponse() {
+        return dataResponse;
+    }
+
+    public void setDataResponse(String dataResponse) {
+        this.dataResponse = dataResponse;
+    }
 
     public String getdataPlot() {
         return dataPlot;
