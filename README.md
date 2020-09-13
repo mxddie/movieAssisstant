@@ -1,6 +1,6 @@
 # Virtual Movie Assistant
 Virtual Assistant using WIT.AI and other public APIs.</br>
-This bot understands what user want to and respond accordingly.</br>
+This bot understands intent of queries related to movies and respond accordingly.</br>
 Like, 
 
 - Asking for rating:
